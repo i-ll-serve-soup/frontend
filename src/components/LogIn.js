@@ -5,10 +5,7 @@ import { logIn } from '../actions/userAcctActions'
 let user = {"username": "", "password": ""};
 
 class LogIn extends Component{
-  constructor(){
-    super()
 
-  }
   logIn = event =>{
     event.preventDefault()
   this.props.logIn(user)
