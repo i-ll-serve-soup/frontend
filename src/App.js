@@ -8,10 +8,12 @@ import Authenticate from './components/Authenticate'
 import './App.css';
 import { Route } from 'react-router-dom'
 
+
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <Login />
         <Route path ="/register" component = {Register}/>
         <Route path = "/display" component = {DisplayInventory} />
         <Route path = "/inventory" component = {Inventory} />
@@ -21,4 +23,6 @@ class App extends Component {
   }
 }
 
-export default Authenticate(App)(Login);
+const WrappedComponent = Authenticate(App)
+
+export default WrappedComponent;
