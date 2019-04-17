@@ -5,6 +5,7 @@ import Inventory from './components/Inventory'
 import LocationGrab from './components/LocationGrab'
 import DisplayInventory from './components/DisplayInventory'
 import Authenticate from './components/Authenticate'
+
 import './App.css';
 import { Route } from 'react-router-dom'
 
