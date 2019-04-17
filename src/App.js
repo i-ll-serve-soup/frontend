@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
-import Login from './components/LogIn'
-import Register from './components/Register'
-import Inventory from './components/Inventory'
-import LocationGrab from './components/LocationGrab'
-import DisplayInventory from './components/DisplayInventory'
-import Authenticate from './components/Authenticate'
+import InventoryPage from "./components/InventoryPages/InventoryPage";
 import './App.css';
-import { Route } from 'react-router-dom'
-
+import Login from "./components/Login/Login";
+import Authenticate from "./components/Login/Authenticate";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login />
-        <Route path ="/register" component = {Register}/>
-        <Route path = "/display" component = {DisplayInventory} />
-        <Route path = "/inventory" component = {Inventory} />
-        <Route path = "/locations" component = {LocationGrab} />
+        <InventoryPage handleTokenExpired={this.props.handleTokenExpired}/>
       </div>
     );
   }
 }
 
-const WrappedComponent = Authenticate(App)
-
-export default WrappedComponent;
+export default Authenticate(App)(Login);
