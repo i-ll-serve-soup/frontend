@@ -34,7 +34,7 @@ const Authenticate = App => LoginPage => {
         handleLogin = (event) => {
             event.preventDefault();
             let loginObj = {
-                email : event.target[0].value,
+                name : event.target[0].value,
                 password : event.target[1].value,
             }
             axios
@@ -53,20 +53,19 @@ const Authenticate = App => LoginPage => {
         handleRegister = (event) => {
             event.preventDefault();
             let registerObj = {
-                firstname : event.target[0].value,
-                lastname : event.target[1].value,
-                role : event.target[2].value,
-                email : event.target[3].value,
-                password : event.target[4].value,
+                name : event.target[0].value,
+                role : event.target[1].value,
+                email : event.target[2].value,
+                password : event.target[3].value,
             }
             axios
             .post('https://kitchen-soup-backend.herokuapp.com/api/users/register', registerObj)
             .then(response => 
               {
                 console.log(response.data.message)
-                this.setState({token: response.data.token})
-                localStorage.setItem("token", response.data.token)
-                this.setState({loggedIn: true});
+                // this.setState({token: response.data.token})
+                // localStorage.setItem("token", response.data.token)
+                // this.setState({loggedIn: true});
               })
             .catch(err => {
                 alert("Have you already used this email address to register? To reset your password, please contact the administrator.")

@@ -100,7 +100,7 @@ class Login extends React.Component {
                   { this.state.display === "login" ?                     
                   <LoginContainer>
                       <Title>I'll Serve Soup</Title>
-                      <LoginForm onSubmit={this.logIn}>
+                      <LoginForm onSubmit={this.props.handleLogin}>
                           <InputText type="text" placeholder="Email"/>
                           <InputText type="password" placeholder="Password"/>
                           <LoginButton type="submit" value="Log In"></LoginButton>
@@ -111,7 +111,7 @@ class Login extends React.Component {
                   : 
                   <RegisterContainer>
                       <Title>I'll Serve Soup</Title>
-                      <LoginForm onSubmit={this.register}>
+                      <LoginForm onSubmit={this.props.handleRegister}>
                           <InputText type="text" placeholder="Name"/>
                           <InputText type="text" placeholder="Role"/>
                           <InputText type="text" placeholder="Email"/>
