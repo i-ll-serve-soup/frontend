@@ -37,7 +37,7 @@ class AddInventory extends React.Component {
                     <label>Item Name:</label>
                     <input className="item-input" type="text" placeholder="name"/>
                     <label>Item Quantity:</label>
-                    <input className="item-input" type="number" placeholder="quantity"/>
+                    <input className="item-input" type="number" placeholder="amount"/>
                     <label>Item Units:</label>
                     <input className="item-input" type="text" placeholder="units"/>
                     <label>Item Price:</label>

@@ -64,9 +64,9 @@ const Authenticate = App => LoginPage => {
             .then(response => 
               {
                 console.log(response.data.message)
-                this.setState({token: response.data.token})
-                localStorage.setItem("token", response.data.token)
-                this.setState({loggedIn: true});
+                //this.setState({token: response.data.token})
+                //localStorage.setItem("token", response.data.token)
+                //this.setState({loggedIn: true});
               })
             .catch(err => 
                 {
