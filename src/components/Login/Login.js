@@ -1,8 +1,7 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div `
-    background-size: cover;
     height: 86vh;
     display: flex;
     align-items: center;
@@ -81,50 +80,50 @@ const Title = styled.h1`
 `;
 
 class Login extends React.Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-          display: "login",
-      }
-  }
-  showRegister = () => {
-      this.setState({display : "register"})
-  }
-  showLogin = () => {
-      this.setState({display: "login"})
-  }
-  render() {
-      return (
-          <Wrapper>
-              <FormContainer>
-                  { this.state.display === "login" ?                     
-                  <LoginContainer>
-                      <Title>I'll Serve Soup</Title>
-                      <LoginForm onSubmit={this.logIn}>
-                          <InputText type="text" placeholder="Email"/>
-                          <InputText type="password" placeholder="Password"/>
-                          <LoginButton type="submit" value="Log In"></LoginButton>
-                          <LinkButton type="button" className="link-button" onClick={this.showRegister}>New User? Register here.</LinkButton>
-                      </LoginForm>
-                      
-                  </LoginContainer> 
-                  : 
-                  <RegisterContainer>
-                      <Title>I'll Serve Soup</Title>
-                      <LoginForm onSubmit={this.register}>
-                          <InputText type="text" placeholder="Name"/>
-                          <InputText type="text" placeholder="Role"/>
-                          <InputText type="text" placeholder="Email"/>
-                          <InputText type="password" placeholder="Password"/>
-                          <LoginButton type="submit" value="Register"></LoginButton>
-                          <LinkButton type="button" className="link-button" onClick={this.showLogin}>Already have an account? Log in here.</LinkButton>
-                      </LoginForm>
-                  </RegisterContainer>
-                  }
-              </FormContainer>
-          </Wrapper>
-      )
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            display: "login",
+        }
+    }
+    showRegister = () => {
+        this.setState({display : "register"})
+    }
+    showLogin = () => {
+        this.setState({display: "login"})
+    }
+    render() {
+        return (
+            <Wrapper>
+                <FormContainer>
+                    { this.state.display === "login" ?                     
+                    <LoginContainer>
+                        <Title>Soup Kitchen</Title>
+                        <LoginForm onSubmit={(e) => {this.props.handleLogin(e)}}>
+                            <InputText type="text" placeholder="Username"/>
+                            <InputText type="password" placeholder="Password"/>
+                            <LoginButton type="submit" value="Log In"></LoginButton>
+                            <LinkButton type="button" className="link-button" onClick={this.showRegister}>New User? Register here.</LinkButton>
+                        </LoginForm>
+                        
+                    </LoginContainer> 
+                    : 
+                    <RegisterContainer>
+                        <Title>Soup Kitchen</Title>
+                        <LoginForm onSubmit={(e) => {this.props.handleRegister(e)}}>
+                            <InputText type="text" placeholder="Name"/>
+                            <InputText type="password" placeholder="Password"/>
+                            <InputText type="text" placeholder="Email"/>
+                            <InputText type="text" placeholder="Role"/>
+                            <LoginButton type="submit" value="Register"></LoginButton>
+                            <LinkButton type="button" className="link-button" onClick={this.showLogin}>Already have an account? Log in here.</LinkButton>
+                        </LoginForm>
+                    </RegisterContainer>
+                    }
+                </FormContainer>
+            </Wrapper>
+        )
+    }
 }
 
 export default Login;

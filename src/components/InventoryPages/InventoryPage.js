@@ -44,16 +44,17 @@ class InventoryPage extends React.Component {
         });
     }
 
-    handleAdd = (e, categoryID) => {
+    handleAdd = (e, categoryID, showSnackBar) => {
         e.preventDefault();
         let addObj = {
-            name : e.target[0].value,
-            amount : parseInt(e.target[1].value),
-            unit : e.target[2].value,
-            price: e.target[3].value,
-            supplier_name: e.target[4].value,
-            supplier_contact: e.target[5].value,
-            image : e.target[6].value,
+            id : e.target[0].value,
+            name : e.target[1].value,
+            amount : parseInt(e.target[2].value),
+            unit : e.target[3].value,
+            price: e.target[4].value,
+            supplier_name: e.target[5].value,
+            supplier_contact: e.target[6].value,
+            image : e.target[7].value,
             categoryID : parseInt(categoryID),
         }
         let options = { 
@@ -72,6 +73,7 @@ class InventoryPage extends React.Component {
             .then(response => 
             {
                 this.setState({items: response.data.items})
+                showSnackBar();
             })
             .catch(err => {
                 console.log(err)

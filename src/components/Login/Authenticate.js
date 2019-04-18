@@ -34,7 +34,7 @@ const Authenticate = App => LoginPage => {
         handleLogin = (event) => {
             event.preventDefault();
             let loginObj = {
-                email : event.target[0].value,
+                name : event.target[0].value,
                 password : event.target[1].value,
             }
             axios
@@ -46,18 +46,18 @@ const Authenticate = App => LoginPage => {
                 this.setState({loggedIn: true});
               })
             .catch(err => {
-                alert("Wrong password, or user doesn't exist.")
+                this.showSnackBar("Wrong password, or user doesn't exist.");
+                //alert("Wrong password, or user doesn't exist.")
                 console.log(err)
             });
           }
         handleRegister = (event) => {
             event.preventDefault();
             let registerObj = {
-                firstname : event.target[0].value,
-                lastname : event.target[1].value,
-                role : event.target[2].value,
-                email : event.target[3].value,
-                password : event.target[4].value,
+                name : event.target[0].value,
+                password : event.target[1].value,
+                email : event.target[2].value,
+                role : event.target[3].value,
             }
             axios
             .post('https://kitchen-soup-backend.herokuapp.com/api/users/register', registerObj)
@@ -68,20 +68,22 @@ const Authenticate = App => LoginPage => {
                 localStorage.setItem("token", response.data.token)
                 this.setState({loggedIn: true});
               })
-            .catch(err => {
-                alert("Have you already used this email address to register? To reset your password, please contact the administrator.")
-            });
+            .catch(err => 
+                {
+                    this.showSnackBar("Email already in use, or registration error.");
+                    //alert("Have you already used this email address to register? To reset your password, please contact the administrator.")
+                });
           }
         handleTokenExpired = () => {
             this.setState({loggedIn : false});
         }
+        showSnackBar = (text) => {
+            let x = this.snackbar.current;
+            x.textContent = text;
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
 
-        // tokenExp = () => {
-        //     setTimeout(() =>{alert('Session timed out due to inactivity. Please log in again.')}, 1500);
-        //     this.setState({loggedIn: false});
-        //     localStorage.clear();
-        //     console.log(this.history);
-        // }
         render() {
             if (this.state.loggedIn) {
             return (
@@ -89,9 +91,12 @@ const Authenticate = App => LoginPage => {
             )
             } else {
                 return (
-                    <div>
-                        <LoginPage handleLogin={this.handleLogin} handleRegister={this.handleRegister} />
+                <div>
+                    <LoginPage handleLogin={this.handleLogin} handleRegister={this.handleRegister} />
+                    <div style={{"backgroundColor": "#7F0000", "opacity":0.8}} id="snackbar" ref={this.snackbar}>
+                        <h1> </h1>
                     </div>
+                </div>
                 )
             }
         }
