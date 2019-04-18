@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import soup from "../../img/soup.png"
 
 const Wrapper = styled.div `
     height: 86vh;
@@ -17,7 +18,7 @@ const FormContainer = styled.div`
 const LoginContainer = styled.div`
     margin: 30px 0 0 0;
     width: 100%;
-    height: 450px;
+    height: 500px;
     background: #fff;
     border: 1px solid #e2e2e2;
     border-radius: 3px;
@@ -53,8 +54,8 @@ const InputText = styled.input`
 
 const LoginButton = styled.input`
     height: 32px;
-    background: #d66565;
-    color: #fff;
+    background: #AED581;
+    color: black;
     opacity: .65;
     font-size: 16px;
     font-weight: bold;
@@ -75,8 +76,17 @@ const Title = styled.h1`
     text-align:center;
     letter-spacing: 0.5px;
     font-weight: normal;
-    color: #5A0C0C;
     font-size: 1.8rem;
+`;
+
+const ImageContainer = styled.div`
+    width: 54%;
+    margin: 21px auto;
+    `;
+
+const Image = styled.img`
+    width: 100%;
+    height: auto;
 `;
 
 class Login extends React.Component {
@@ -98,7 +108,10 @@ class Login extends React.Component {
                 <FormContainer>
                     { this.state.display === "login" ?                     
                     <LoginContainer>
-                        <Title>Soup Kitchen</Title>
+                        <ImageContainer>
+                            <Image alt="soup" src={soup}/>
+                        </ImageContainer>
+                        <Title>I'll Serve Soup</Title>
                         <LoginForm onSubmit={(e) => {this.props.handleLogin(e)}}>
                             <InputText type="text" placeholder="Username"/>
                             <InputText type="password" placeholder="Password"/>
@@ -109,7 +122,10 @@ class Login extends React.Component {
                     </LoginContainer> 
                     : 
                     <RegisterContainer>
-                        <Title>Soup Kitchen</Title>
+                        <ImageContainer>
+                            <Image alt="soup" src={soup}/>
+                        </ImageContainer>
+                        <Title>I'll Serve Soup</Title>
                         <LoginForm onSubmit={(e) => {this.props.handleRegister(e)}}>
                             <InputText type="text" placeholder="Name"/>
                             <InputText type="password" placeholder="Password"/>
