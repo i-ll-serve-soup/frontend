@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
+import soup from "../../img/soup.png"
 
 const Wrapper = styled.div `
-    background-size: cover;
     height: 86vh;
     display: flex;
     align-items: center;
@@ -18,7 +18,7 @@ const FormContainer = styled.div`
 const LoginContainer = styled.div`
     margin: 30px 0 0 0;
     width: 100%;
-    height: 450px;
+    height: 500px;
     background: #fff;
     border: 1px solid #e2e2e2;
     border-radius: 3px;
@@ -54,8 +54,8 @@ const InputText = styled.input`
 
 const LoginButton = styled.input`
     height: 32px;
-    background: #d66565;
-    color: #fff;
+    background: #AED581;
+    color: black;
     opacity: .65;
     font-size: 16px;
     font-weight: bold;
@@ -76,55 +76,70 @@ const Title = styled.h1`
     text-align:center;
     letter-spacing: 0.5px;
     font-weight: normal;
-    color: #5A0C0C;
     font-size: 1.8rem;
 `;
 
+const ImageContainer = styled.div`
+    width: 54%;
+    margin: 21px auto;
+    `;
+
+const Image = styled.img`
+    width: 100%;
+    height: auto;
+`;
+
 class Login extends React.Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-          display: "login",
-      }
-  }
-  showRegister = () => {
-      this.setState({display : "register"})
-  }
-  showLogin = () => {
-      this.setState({display: "login"})
-  }
-  render() {
-      return (
-          <Wrapper>
-              <FormContainer>
-                  { this.state.display === "login" ?                     
-                  <LoginContainer>
-                      <Title>I'll Serve Soup</Title>
-                      <LoginForm onSubmit={this.logIn}>
-                          <InputText type="text" placeholder="Email"/>
-                          <InputText type="password" placeholder="Password"/>
-                          <LoginButton type="submit" value="Log In"></LoginButton>
-                          <LinkButton type="button" className="link-button" onClick={this.showRegister}>New User? Register here.</LinkButton>
-                      </LoginForm>
-                      
-                  </LoginContainer> 
-                  : 
-                  <RegisterContainer>
-                      <Title>I'll Serve Soup</Title>
-                      <LoginForm onSubmit={this.register}>
-                          <InputText type="text" placeholder="Name"/>
-                          <InputText type="text" placeholder="Role"/>
-                          <InputText type="text" placeholder="Email"/>
-                          <InputText type="password" placeholder="Password"/>
-                          <LoginButton type="submit" value="Register"></LoginButton>
-                          <LinkButton type="button" className="link-button" onClick={this.showLogin}>Already have an account? Log in here.</LinkButton>
-                      </LoginForm>
-                  </RegisterContainer>
-                  }
-              </FormContainer>
-          </Wrapper>
-      )
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            display: "login",
+        }
+    }
+    showRegister = () => {
+        this.setState({display : "register"})
+    }
+    showLogin = () => {
+        this.setState({display: "login"})
+    }
+    render() {
+        return (
+            <Wrapper>
+                <FormContainer>
+                    { this.state.display === "login" ?                     
+                    <LoginContainer>
+                        <ImageContainer>
+                            <Image alt="soup" src={soup}/>
+                        </ImageContainer>
+                        <Title>I'll Serve Soup</Title>
+                        <LoginForm onSubmit={(e) => {this.props.handleLogin(e)}}>
+                            <InputText type="text" placeholder="Username"/>
+                            <InputText type="password" placeholder="Password"/>
+                            <LoginButton type="submit" value="Log In"></LoginButton>
+                            <LinkButton type="button" className="link-button" onClick={this.showRegister}>New User? Register here.</LinkButton>
+                        </LoginForm>
+                        
+                    </LoginContainer> 
+                    : 
+                    <RegisterContainer>
+                        <ImageContainer>
+                            <Image alt="soup" src={soup}/>
+                        </ImageContainer>
+                        <Title>I'll Serve Soup</Title>
+                        <LoginForm onSubmit={(e) => {this.props.handleRegister(e)}}>
+                            <InputText type="text" placeholder="Name"/>
+                            <InputText type="password" placeholder="Password"/>
+                            <InputText type="text" placeholder="Email"/>
+                            <InputText type="text" placeholder="Role"/>
+                            <LoginButton type="submit" value="Register"></LoginButton>
+                            <LinkButton type="button" className="link-button" onClick={this.showLogin}>Already have an account? Log in here.</LinkButton>
+                        </LoginForm>
+                    </RegisterContainer>
+                    }
+                </FormContainer>
+            </Wrapper>
+        )
+    }
 }
 
 export default Login;

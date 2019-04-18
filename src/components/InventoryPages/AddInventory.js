@@ -5,6 +5,7 @@ import Select from 'react-select';
 class AddInventory extends React.Component {
     constructor(props) {
         super(props);
+        this.snackbar = React.createRef();
         this.state = {
             selectedOption : null,
             categories : [],
@@ -22,6 +23,11 @@ class AddInventory extends React.Component {
     handleChange = (selectedOption) => {
         this.setState({ selectedOption : selectedOption });
       }
+    showSnackBar = () => {
+        let x = this.snackbar.current;
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
     render() {
         const options = this.state.categories.map(obj => ({value: obj.id, label: obj.name}))
         
@@ -31,7 +37,7 @@ class AddInventory extends React.Component {
                     <label>Item Name:</label>
                     <input className="item-input" type="text" placeholder="name"/>
                     <label>Item Quantity:</label>
-                    <input className="item-input" type="number" placeholder="quantity"/>
+                    <input className="item-input" type="number" placeholder="amount"/>
                     <label>Item Units:</label>
                     <input className="item-input" type="text" placeholder="units"/>
                     <label>Item Price:</label>
@@ -51,6 +57,7 @@ class AddInventory extends React.Component {
                         options={options}
                     />
                     <input className="item-input" value="Add to Inventory" type="submit"/>
+                    <div id="snackbaradd" ref={this.snackbar}><h1>Successfully added item!</h1></div>
                 </form>
             </div>
         )

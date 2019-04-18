@@ -44,7 +44,7 @@ class InventoryPage extends React.Component {
         });
     }
 
-    handleAdd = (e, categoryID) => {
+    handleAdd = (e, categoryID, showSnackBar) => {
         e.preventDefault();
         let addObj = {
             name : e.target[0].value,
@@ -56,6 +56,7 @@ class InventoryPage extends React.Component {
             image : e.target[6].value,
             categoryID : parseInt(categoryID),
         }
+        console.log(addObj)
         let options = { 
             headers: {
                 Authorization: localStorage.getItem("token"),
@@ -72,6 +73,7 @@ class InventoryPage extends React.Component {
             .then(response => 
             {
                 this.setState({items: response.data.items})
+                showSnackBar();
             })
             .catch(err => {
                 console.log(err)
@@ -188,7 +190,8 @@ class InventoryPage extends React.Component {
             .get(`https://kitchen-soup-backend.herokuapp.com/api/categories/${id}`, options)
             .then(response => 
             {
-                this.setState({items: response.data.category.items, selected_category: id})
+                console.log(response)
+                this.setState({items: response.data.items, selected_category: id})
             })
             .catch(err => {
                 console.log(err);
