@@ -2,9 +2,34 @@
 /* CSS Variables */
 
 :root { 
+  /* Colors  ------------------------------------------------------*/
   --link-text-color-on-hover: #0097A7;
   --link-bg-on-hover: #C5E1A5;
   --header-color: #F1F8E9;
+
+  /* Primary */
+  --primary-50: rgba(96%,98%,93%,1.00);
+  --primary-100: rgba(89%,94%,82%,1.00);
+  --primary-200: rgba(81%,90%,71%,1.00);
+  --primary-300: rgba(73%,86%,58%,1.00);
+  --primary-400: rgba(67%,83%,47%,1.00);
+  --primary-500: rgba(61%,79%,36%,1.00);
+  --primary-600: rgba(55%,74%,33%,1.00);
+  --primary-700: rgba(48%,67%,28%,1.00);
+  --primary-800: rgba(40%,60%,24%,1.00);
+  --primary-900: rgba(25%,48%,16%,1.00);
+
+  /* Accent */
+  --accent-50: rgba(90%,97%,98%,1.00);
+  --accent-100: rgba(75%,93%,96%,1.00);
+  --accent-200: rgba(56%,89%,93%,1.00);
+  --accent-300: rgba(35%,85%,91%,1.00);
+  --accent-400: rgba(14%,81%,88%,1.00);
+  --accent-500: rgba(0%,78%,86%,1.00);
+  --accent-600: rgba(0%,73%,80%,1.00);
+  --accent-700: rgba(0%,65%,71%,1.00);
+  --accent-800: rgba(0%,58%,63%,1.00);
+  --accent-900: rgba(0%,45%,47%,1.00);
 }
 
 /* Global Styles */
@@ -82,29 +107,31 @@ nav .selected-nav {
 }
 
 header {
-  background-color: var(--header-color);
-  border-bottom: 1px solid lightgrey;
+  background-color: #fff;
+  border-bottom: 1px solid var(--primary-50);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 .nav-wrap {
   max-width: 1100px;
-  height: 100px;
-  padding: 10px;
+  height: 72px;
+  padding: 8px;
   margin: 0 auto;
   display: flex;
   align-items: center;
 }
 
 .nav-wrap .img-container img {
-  width: 100px;
+  width: 64px;
   margin-right: 20px;
 }
 
 .nav-wrap h1 {
   font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  color: var(--primary-700);
   padding: 0;
-  font-size: 2.2rem;
-  letter-spacing: 0.1rem;
-  font-weight: normal;
+  font-size: 24pt;
+  letter-spacing: 0rem;
 }
 
 .nav-wrap h2 {
