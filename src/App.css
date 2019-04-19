@@ -465,28 +465,30 @@ label {
   justify-content: none;
   align-items: center;
   flex-direction: row;
-  color: #fff;
-  background-color: #7CB342;
+  color: #000000de;
+  background-color: #0000001f;
   margin: 5px 5px;
-  padding: 5px 20px;
-  font-size: 1.3rem;
-  letter-spacing: 3px;
+  padding: 5px 12px;
+  font-size: 13.82px;
+  letter-spacing: 0.25px;
   cursor: pointer;
   border: none;
+  border-radius: 16px;
   transition: 0.1s ease-in-out;
 }
 
 .category:hover {
-  background-color: #33691E;
+  background-color: #C5E1A5;
+  color: var(--primary-900);
 }
 .category-active {
-  background-color: #C5E1A5;
-  color: #333;
+  background-color: #B2C89F;
+  color: var(--primary-900);
 }
 
 .category-active:hover { 
-  color: black;
-  background-color: rgb(245, 253, 248);
+  background-color: #B2C89F;
+  color: var(--primary-800);
 }
 
 .categories {
