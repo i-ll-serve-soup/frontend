@@ -56,6 +56,9 @@ class InventoryPage extends React.Component {
             image : e.target[6].value,
             categoryID : parseInt(categoryID),
         }
+        if (addObj['image'] === '' || undefined) {
+          addObj['image'] = 'https://spoonacular.com/cdn/ingredients_500x500/' + addObj['name'].toLowerCase() + '.jpg'
+        }
         console.log(addObj)
         let options = { 
             headers: {
