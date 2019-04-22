@@ -44,7 +44,7 @@ const Inventory = props => {
                           alt={item.name}
                       />
                 </div>
-                <div className="text-bubble">
+                <div className="item-description">
                     <p><span className="quantity">{item.amount}</span> {item.unit}</p>
                     <p>{item.name}</p>
                 </div>
