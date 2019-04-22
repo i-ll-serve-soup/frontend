@@ -16,9 +16,9 @@ const FormContainer = styled.div`
 `;
 
 const LoginContainer = styled.div`
-    margin: 30px 0 0 0;
+    margin-top: 20%;
+    padding: 20px;
     width: 100%;
-    height: 500px;
     background: #fff;
     border: 1px solid #e2e2e2;
     border-radius: 3px;
@@ -26,9 +26,9 @@ const LoginContainer = styled.div`
     `;
 
 const RegisterContainer = styled.div`
-    margin: 30px 0 0 0;
+    margin-top: 20%;
+    padding: 20px;
     width: 100%;
-    height: 580px;
     background: #fff;
     border: 1px solid #e2e2e2;
     border-radius: 3px;
@@ -53,23 +53,34 @@ const InputText = styled.input`
 `;
 
 const LoginButton = styled.input`
-    height: 32px;
-    background: #AED581;
-    color: black;
-    opacity: .65;
-    font-size: 16px;
-    font-weight: bold;
+    margin: 20px 0;
+    background: rgba(55%,74%,33%,1.00);
+    padding: 8px 16px;
+    font-size: 13.82pt;
+    letter-spacing: 0.25pt;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
 `;
 
 const LinkButton = styled.button`
-    color: blue;
+    padding: 8px 16px;
+    font-size: 10pt;
+    letter-spacing: 0.25pt;
+    font-weight: normal;
+    color: rgba(48%,67%,28%,1.00);
+    text-decoration: none;
+    background-color: rgba(96%,98%,93%,1.00);
     border-radius: 5px;
-    border: none;
-    background-color: white;
-    padding: 10px;
-    margin-top: 20px;
+    border: 1px solid rgba(81%,90%,71%,1.00);
+`;
+
+const ButtonLabel = styled.span`
+    text-align: center;
+    color: #777;
+    font-size: 11px;
+    margin: 10px 0;
 `;
 
 const Title = styled.h1`
@@ -116,7 +127,8 @@ class Login extends React.Component {
                             <InputText type="text" placeholder="Username"/>
                             <InputText type="password" placeholder="Password"/>
                             <LoginButton type="submit" value="Log In"></LoginButton>
-                            <LinkButton type="button" className="link-button" onClick={this.showRegister}>New User? Register here.</LinkButton>
+                            <ButtonLabel>New user?</ButtonLabel>
+                            <LinkButton type="button" className="link-button" onClick={this.showRegister}>Sign up</LinkButton>
                         </LoginForm>
                         
                     </LoginContainer> 
@@ -127,12 +139,13 @@ class Login extends React.Component {
                         </ImageContainer>
                         <Title>I'll Serve Soup</Title>
                         <LoginForm onSubmit={(e) => {this.props.handleRegister(e)}}>
-                            <InputText type="text" placeholder="Name"/>
+                            <InputText type="text" placeholder="Username"/>
                             <InputText type="password" placeholder="Password"/>
                             <InputText type="text" placeholder="Email"/>
                             <InputText type="text" placeholder="Role"/>
                             <LoginButton type="submit" value="Register"></LoginButton>
-                            <LinkButton type="button" className="link-button" onClick={this.showLogin}>Already have an account? Log in here.</LinkButton>
+                            <ButtonLabel>Already have an account?</ButtonLabel>
+                            <LinkButton type="button" className="link-button" onClick={this.showLogin}>Log in</LinkButton>
                         </LoginForm>
                     </RegisterContainer>
                     }
