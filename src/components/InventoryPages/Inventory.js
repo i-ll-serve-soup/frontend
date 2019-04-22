@@ -37,12 +37,13 @@ const Inventory = props => {
             className="item-card"
             key={item.id}
             >
-                <img
-                    className="item-list-image"
-                    onError={props.onError}
-                    src={item.image}
-                    alt={item.name}
-                />
+                <div className="image-container">
+                      <img
+                          onError={props.onError}
+                          src={item.image}
+                          alt={item.name}
+                      />
+                </div>
                 <div className="text-bubble">
                     <p><span className="quantity">{item.amount}</span> {item.unit}</p>
                     <p>{item.name}</p>
